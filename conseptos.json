@@ -1,0 +1,211 @@
+[{
+    tiendaSuper: [{
+        alimentacion: "Alimentación",
+        Limpieza: "Limpieza",
+        perfumería: "Perfumería",
+        hogarMenaje: "Hogar y Menaje",
+        ropa: "Ropa",
+        calzado: "Calzado",
+        informática: "Informática",
+        regalos: "Regalos",
+        varios: "Varios"
+    }
+    ],
+    gastosFijos: [
+        {
+            agua: "Agua",
+            luz: "Luz",
+            gas: "Gas",
+            teléfono: "Teléfono",
+            comunidad: "Comunidad",
+            servicio: "Servicio",
+            televisión: "Televisión",
+            gOtros: "GOtros"
+
+        }
+    ],
+    formación: [
+        {
+            colegio: "Colegio",
+            extraescolares: "Extraescolares",
+            libros: "Libros",
+            excursiones: "Excursiones",
+            cursos: "Cursos",
+            fVarios: "fVarios"
+
+        }
+    ],
+    ocio: [
+        {
+            Vacaciones: "Vacaciones",
+            Excursiones: "Excursiones",
+            Espectáculos: "Espectáculos",
+            Deporte: "Deporte",
+            Restaurantes: "Restaurantes",
+            Bares: "Bares",
+            librosRevistas: "Libros y Revistas",
+            Juegos: "Juegos",
+            Música: "Música",
+            oOtros: "oOtros"
+
+        }
+    ],
+    transporte: [
+        {
+            taller: "Taller",
+            combustible: "Combustible",
+            seguros: "Seguros",
+            seguros: "Multas",
+            impuestos: "Impuestos",
+            público: "Público",
+            correos: "Correos",
+            tOtros: "TOtros",
+
+        }
+    ],
+    vivienda: [{
+        muebles: "Muebles",
+        electrodomesticos: "Electrodomesticos",
+        reparaciones: "Reparaciones",
+        vInformática: "V- Informática",
+        impuestos: "Impuestos",
+        vOtros: "V - Otros",
+    }],
+    saludBienestar: [{
+        médicos: "Médicos",
+        farmacia: "Farmacia",
+        sOtros: "S - Otros",
+        sOtros: "Cuidado Personal",
+    }
+    ],
+    seguros: [{
+        vivienda: "Vivienda",
+        vida: "Vida",
+        jubilación: "Jubilación",
+        electrodomesticos: "Electrodomesticos"
+    }],
+    chalet: [{
+        luz: "Luz",
+        AguaBasura: "Agua y Basura",
+        gasoleo: "Gasoleo",
+        impuestos: "Impuestos",
+        mantenimiento: "Mantenimiento",
+        jardinería: "Jardinería",
+        cOtros: "C - Otros",
+    }],
+    mascotas: [{
+        Alimentos: "Alimentos",
+        Salud: "Salud",
+        Juguetes: "Juguetes",
+        mOtros: "M - Otros",
+    }]
+
+
+
+}]
+// ---------------------------
+// const conseptos = {
+//     tiendaSuper: [{
+//         alimentacion: "Alimentación",
+//         Limpieza: "Limpieza",
+//         perfumería: "Perfumería",
+//         hogarMenaje: "Hogar y Menaje",
+//         ropa: "Ropa",
+//         calzado: "Calzado",
+//         informática: "Informática",
+//         regalos: "Regalos",
+//         varios: "Varios"
+//     }
+//     ],
+//     gastosFijos: [
+//         {
+//             agua: "Agua",
+//             luz: "Luz",
+//             gas: "Gas",
+//             teléfono: "Teléfono",
+//             comunidad: "Comunidad",
+//             servicio: "Servicio",
+//             televisión: "Televisión",
+//             gOtros: "GOtros"
+
+//         }
+//     ],
+//     formación: [
+//         {
+//             colegio: "Colegio",
+//             extraescolares: "Extraescolares",
+//             libros: "Libros",
+//             excursiones: "Excursiones",
+//             cursos: "Cursos",
+//             fVarios: "fVarios"
+
+//         }
+//     ],
+//     ocio: [
+//         {
+//             Vacaciones: "Vacaciones",
+//             Excursiones: "Excursiones",
+//             Espectáculos: "Espectáculos",
+//             Deporte: "Deporte",
+//             Restaurantes: "Restaurantes",
+//             Bares: "Bares",
+//             librosRevistas: "Libros y Revistas",
+//             Juegos: "Juegos",
+//             Música: "Música",
+//             oOtros: "oOtros"
+
+//         }
+//     ],
+//     transporte: [
+//         {
+//             taller: "Taller",
+//             combustible: "Combustible",
+//             seguros: "Seguros",
+//             seguros: "Multas",
+//             impuestos: "Impuestos",
+//             público: "Público",
+//             correos: "Correos",
+//             tOtros: "TOtros",
+
+//         }
+//     ],
+//     vivienda: [{
+//         muebles: "Muebles",
+//         electrodomesticos: "Electrodomesticos",
+//         reparaciones: "Reparaciones",
+//         vInformática: "V- Informática",
+//         impuestos: "Impuestos",
+//         vOtros: "V - Otros",
+//     }],
+//     saludBienestar: [{
+//         médicos: "Médicos",
+//         farmacia: "Farmacia",
+//         sOtros: "S - Otros",
+//         sOtros: "Cuidado Personal",
+//     }
+//     ],
+//     seguros: [{
+//         vivienda: "Vivienda",
+//         vida: "Vida",
+//         jubilación: "Jubilación",
+//         electrodomesticos: "Electrodomesticos"
+//     }],
+//     chalet: [{
+//         luz: "Luz",
+//         AguaBasura: "Agua y Basura",
+//         gasoleo: "Gasoleo",
+//         impuestos: "Impuestos",
+//         mantenimiento: "Mantenimiento",
+//         jardinería: "Jardinería",
+//         cOtros: "C - Otros",
+//     }],
+//     mascotas: [{
+//         Alimentos: "Alimentos",
+//         Salud: "Salud",
+//         Juguetes: "Juguetes",
+//         mOtros: "M - Otros",
+//     }]
+
+
+
+// }
