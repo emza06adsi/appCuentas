@@ -66,7 +66,7 @@ function dom() {
                 <input type="date" name="" id="fecha" class="form-control col-lg-6 my-3  ">
                 <label for="tipo de ingreso">valor de ingreso</label>
                 <input type="text" name="" id="valor" class="form-control col-lg-6 my-3  ">
-                <textarea class="form-control col-lg-6 my-3" placeholder="comentario" id=comentario value=""></textarea>
+                <textarea class="form-control col-lg-6 my-3" placeholder="comentario" id="comentario" value=""></textarea>
                 <button class="btn btn-info col-lg-6" id="boton" onclick="guardar()">Guardar</button>
             </center>
             <!--  -->
@@ -99,40 +99,81 @@ function dom() {
 
 
 function guardar() {
+    let opcion = document.getElementById('dom').value
+
+    if (opcion == 'egreso') {
+        let tipoGasto = document.getElementById('tipoGasto').value
+        let gasto = document.getElementById('gasto').value
+        let comentario = document.getElementById('comentario').value
+        let valor = document.getElementById('valor').value
+        let fecha = document.getElementById("fecha").value
 
 
-    var tipoGasto = document.getElementById('tipoGasto').value
-    var gasto = document.getElementById('gasto').value
-    var comentario = document.getElementById('comentario').value
-    var fecha = Date.parse(document.getElementById("fecha"))
+        db.collection("gastos").add({
 
-    db.collection("gastos").add({
-        tipoGasto: tipoGasto,
-        gasto: gasto,
-        comentario: comentario,
-        fecha: fecha
-    })
-        .then(function (docRef) {
-            console.log("este es el id", docRef.id);
-            console.log(db.collection("gastos"))
-            tipoGasto = document.getElementById('tipoGasto').value = ""
-            gasto = document.getElementById('gasto').value = ""
-            comentario = document.getElementById('comentario').value = ""
-            fecha = document.getElementById('fecha').value = ""
+            tipoGasto: tipoGasto,
+            gasto: gasto,
+            valor: valor,
+            fecha: fecha,
+            comentario: comentario
 
         })
-        .catch(function (error) {
-            console.error("error", error);
-        });
+            .then(function (docRef) {
+                console.log("este es el id", docRef.id);
+                console.log(db.collection("gastos"))
+                tipoGasto = document.getElementById('tipoGasto').value = ""
+                gasto = document.getElementById('gasto').value = ""
+                comentario = document.getElementById('comentario').value = ""
+                fecha = document.getElementById('fecha').value = ""
+                valor = document.getElementById('valor').value = ""
+
+            })
+            .catch(function (error) {
+                console.error("error", error);
+            });
+    }
+    else if (opcion == 'ingreso') {
+        let queIngresa = document.getElementById('ingreso').value
+        let fecha = document.getElementById('fecha').value
+        let valor = document.getElementById('valor').value
+        let comentario = document.getElementById('comentario').value
+
+
+        db.collection("ingresos").add({
+
+            queIngresa: queIngresa,
+            valorIngresado: valor,
+            fecha: fecha,
+            comentario: comentario
+
+        })
+            .then(function (docRef) {
+                console.log("este es el id", docRef.id);
+                console.log(db.collection("ingresos"))
+                let queIngresa = document.getElementById('ingreso').value
+                fecha = document.getElementById('fecha').value = ""
+                valor = document.getElementById('valor').value = ""
+                comentario = document.getElementById('comentario').value = ""
+
+
+            })
+            .catch(function (error) {
+                console.error("error", error);
+            });
+    }
+
 }
 //base de satos
 function leer() {
-    var tabla = document.getElementById("tabla")
-    db.collection("gastos").onSnapshot((querySnapshot) => {
-        tabla.innerHTML = ""
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
-            tabla.innerHTML += `<tr>
+    let opcion = document.getElementById('dom').value
+
+    if (opcion == "egreso") {
+        var tabla = document.getElementById("tabla")
+        db.collection("gastos").onSnapshot((querySnapshot) => {
+            tabla.innerHTML = ""
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${doc.data()}`);
+                tabla.innerHTML += `<tr>
         <th scope="row">${doc.id}</th>
         <th>${doc.data().tipoGasto}</th>
         <th>${doc.data().gasto}</th>
@@ -146,18 +187,51 @@ function leer() {
         </th>
 
     </tr>`
+            });
         });
-    });
+    }
+    else if (opcion == "ingreso") {
+        var tabla = document.getElementById("tabla")
+        db.collection("ingresos").onSnapshot((querySnapshot) => {
+            tabla.innerHTML = ""
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${doc.data()}`);
+                tabla.innerHTML += `<tr>
+        <th scope="row">${doc.id}</th>
+        <th>${doc.data().queIngresa}</th>
+        <th>${doc.data().valorIngresado}</th>
+        <th>${doc.data().fecha}</th>
+        <th>${doc.data().comentario}</th>
+        
+        <th>     <button class="btn btn-danger  id="boton" onclick="eliminar('${doc.id}')">Eliminar</button>
+        </th>
+        <th>     <button class="btn btn-warning  id="" onclick="editar('${doc.id}','${doc.data().queIngresa}','${doc.data().valorIngresado}',
+        '${doc.data().fecha}','${doc.data().comentario}')">Editar</button>
+        </th>
 
+    </tr>`
+            });
+        });
+    }
 }
 // borrar
+//aca voyMM
 function eliminar(id) {
-    db.collection("gastos").doc(id).delete().then(function () {
-        console.log("Document successfully deleted!");
-    }).catch(function (error) {
-        console.error("Error removing document: ", error);
-    });
-
+    let opcion = document.getElementById('dom').value
+    if (opcion = "egreso") {
+        db.collection("gastos").doc(id).delete().then(function () {
+            console.log("Document successfully deleted!");
+        }).catch(function (error) {
+            console.error("Error removing document: ", error);
+        });
+    }
+    else if (opcion == "ingreso") {
+        db.collection("ingresos").doc(id).delete().then(function () {
+            console.log("Document successfully deleted!");
+        }).catch(function (error) {
+            console.error("Error removing document: ", error);
+        });
+    }
 }
 
 
