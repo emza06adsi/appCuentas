@@ -205,7 +205,7 @@ function leer() {
         
         <th>     <button class="btn btn-danger  id="boton" onclick="eliminar('${doc.id}')">Eliminar</button>
         </th>
-        <th>     <button class="btn btn-warning  id="" onclick="editar('${doc.id}','${doc.data().queIngresa}','${doc.data().valorIngresado}',
+        <th>     <button class="btn btn-warning  id="" onclick="editarI('${doc.id}','${doc.data().queIngresa}','${doc.data().valorIngresado}',
         '${doc.data().fecha}','${doc.data().comentario}')">Editar</button>
         </th>
 
@@ -218,7 +218,7 @@ function leer() {
 //aca voyMM
 function eliminar(id) {
     let opcion = document.getElementById('dom').value
-    if (opcion = "egreso") {
+    if (opcion == "egreso") {
         db.collection("gastos").doc(id).delete().then(function () {
             console.log("Document successfully deleted!");
         }).catch(function (error) {
@@ -226,6 +226,7 @@ function eliminar(id) {
         });
     }
     else if (opcion == "ingreso") {
+        // console.log("eliminando el sistema")
         db.collection("ingresos").doc(id).delete().then(function () {
             console.log("Document successfully deleted!");
         }).catch(function (error) {
@@ -237,7 +238,6 @@ function eliminar(id) {
 
 // actualizar
 function editar(id, tipoGasto, gasto, comentario, fecha) {
-
     document.getElementById('tipoGasto').value = tipoGasto
     document.getElementById('gasto').value = gasto
     document.getElementById('comentario').value = comentario
@@ -278,8 +278,61 @@ function editar(id, tipoGasto, gasto, comentario, fecha) {
 
 
     }
-
 }
+
+
+
+
+function editarI(
+    id,
+    queIngresa,
+    valorIngresado,
+    fecha,
+    comentario) {
+    
+    
+    document.getElementById('queIngresa').value = queIngresa
+    document.getElementById('valorIngresado').value = valorIngresado
+    document.getElementById('comentario').value = comentario
+    document.getElementById("fecha").value = fecha
+    var boton = document.getElementById('boton')
+    boton.innerHTML = 'Editar'
+
+    boton.onclick = function () {
+        var washingtonRef = db.collection("ingresos").doc(id);
+
+        let  queIngresa = document.getElementById('queIngresa').value;
+        let  valorIngresado = document.getElementById('valorIngresado').value
+        let  comentario = document.getElementById('comentario').value
+        let  fecha = document.getElementById("fecha").value
+
+
+        return washingtonRef.update({
+            queIngresa: queIngresa,
+            valorIngresado: valorIngresado,
+            comentario: comentario,
+            fecha: fecha
+
+        })
+            .then(function () {
+                console.log("Document successfully updated!");
+                boton.innerHTML = 'Guardar'
+
+                queIngresa = document.getElementById('tipoGasto').value = ""
+                valorIngresado = document.getElementById('gasto').value = ""
+                comentario = document.getElementById('comentario').value = ""
+                fecha = document.getElementById('fecha').value = ""
+
+            })
+            .catch(function (error) {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+            });
+
+
+    }
+}
+
 
 // -------------------------------------------------------------------------
 // --ingreso

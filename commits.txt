@@ -1,0 +1,23 @@
+commit 06531cc0fb14d9f9a41c344116fe79891b742c47
+Author: Eesteban Meza <estebanmezabetancurgmail.com>
+Date:   Thu Jun 20 05:44:46 2019 +0200
+
+    Solo pruebo que sirva
+
+commit 12ad65f808f365827355a58e683eb8ff539731ad
+Author: Eesteban Meza <estebanmezabetancurgmail.com>
+Date:   Wed Jun 19 03:11:47 2019 +0200
+
+    ya suprimi e cambio
+
+commit a88cd136456498cb4b5dd1a5e668a4c487b8eee3
+Author: Eesteban Meza <estebanmezabetancurgmail.com>
+Date:   Wed Jun 19 03:09:21 2019 +0200
+
+    solo hice un cambio pequeño
+
+commit 8dce2bf304241b47a08961cdecce68a27fe99054
+Author: Eesteban Meza <estebanmezabetancurgmail.com>
+Date:   Wed Jun 19 03:04:01 2019 +0200
+
+     hay que borrar el arcivo de conseptos.js con s
