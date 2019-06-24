@@ -61,11 +61,11 @@ function dom() {
         html += `
             <center>
                 <label for="tipo de ingreso">que ingresa</label>
-                <input type="text" id="ingreso" class="form-control col-lg-6 my-3">
+                <input type="text" id="ingreso" value="" class="form-control col-lg-6 my-3">
                 <label for="tipo de ingreso">fecha de ingreso</label>
-                <input type="date" name="" id="fecha" class="form-control col-lg-6 my-3  ">
+                <input type="date" name="" id="fecha" value="" class="form-control col-lg-6 my-3  ">
                 <label for="tipo de ingreso">valor de ingreso</label>
-                <input type="text" name="" id="valor" class="form-control col-lg-6 my-3  ">
+                <input type="text" name="" id="valor" value="" class="form-control col-lg-6 my-3  ">
                 <textarea class="form-control col-lg-6 my-3" placeholder="comentario" id="comentario" value=""></textarea>
                 <button class="btn btn-info col-lg-6" id="boton" onclick="guardar()">Guardar</button>
             </center>
@@ -150,7 +150,7 @@ function guardar() {
             .then(function (docRef) {
                 console.log("este es el id", docRef.id);
                 console.log(db.collection("ingresos"))
-                let queIngresa = document.getElementById('ingreso').value
+                queIngresa = document.getElementById('ingreso').value = ""
                 fecha = document.getElementById('fecha').value = ""
                 valor = document.getElementById('valor').value = ""
                 comentario = document.getElementById('comentario').value = ""
@@ -265,11 +265,43 @@ function editar(id, tipoGasto, gasto, comentario, fecha) {
                 console.log("Document successfully updated!");
                 boton.innerHTML = 'Guardar'
 
+
                 tipoGasto = document.getElementById('tipoGasto').value = ""
                 gasto = document.getElementById('gasto').value = ""
                 comentario = document.getElementById('comentario').value = ""
                 fecha = document.getElementById('fecha').value = ""
 
+                boton.onclick = function () {
+                    let tipoGasto = document.getElementById('tipoGasto').value
+                    let gasto = document.getElementById('gasto').value
+                    let comentario = document.getElementById('comentario').value
+                    let valor = document.getElementById('valor').value
+                    let fecha = document.getElementById("fecha").value
+
+
+                    db.collection("gastos").add({
+
+                        tipoGasto: tipoGasto,
+                        gasto: gasto,
+                        valor: valor,
+                        fecha: fecha,
+                        comentario: comentario
+
+                    })
+                        .then(function (docRef) {
+                            console.log("este es el id", docRef.id);
+                            console.log(db.collection("gastos"))
+                            tipoGasto = document.getElementById('tipoGasto').value = ""
+                            gasto = document.getElementById('gasto').value = ""
+                            comentario = document.getElementById('comentario').value = ""
+                            fecha = document.getElementById('fecha').value = ""
+                            valor = document.getElementById('valor').value = ""
+
+                        })
+                        .catch(function (error) {
+                            console.error("error", error);
+                        });
+                }
             })
             .catch(function (error) {
                 // The document probably doesn't exist.
@@ -278,6 +310,7 @@ function editar(id, tipoGasto, gasto, comentario, fecha) {
 
 
     }
+
 }
 
 
@@ -289,10 +322,9 @@ function editarI(
     valorIngresado,
     fecha,
     comentario) {
-    
-    
-    document.getElementById('queIngresa').value = queIngresa
-    document.getElementById('valorIngresado').value = valorIngresado
+    alert(id + " id " + queIngresa + " ingreso " + valorIngresado + " valor " + fecha + " fecha " + comentario + " comentario ")
+    document.getElementById('ingreso').value = queIngresa
+    document.getElementById('valor').value = valorIngresado
     document.getElementById('comentario').value = comentario
     document.getElementById("fecha").value = fecha
     var boton = document.getElementById('boton')
@@ -301,10 +333,11 @@ function editarI(
     boton.onclick = function () {
         var washingtonRef = db.collection("ingresos").doc(id);
 
-        let  queIngresa = document.getElementById('queIngresa').value;
-        let  valorIngresado = document.getElementById('valorIngresado').value
-        let  comentario = document.getElementById('comentario').value
-        let  fecha = document.getElementById("fecha").value
+
+        let queIngresa = document.getElementById('ingreso').value;
+        let valorIngresado = document.getElementById('valor').value
+        let comentario = document.getElementById('comentario').value
+        let fecha = document.getElementById("fecha").value
 
 
         return washingtonRef.update({
@@ -315,13 +348,58 @@ function editarI(
 
         })
             .then(function () {
+                
                 console.log("Document successfully updated!");
                 boton.innerHTML = 'Guardar'
 
-                queIngresa = document.getElementById('tipoGasto').value = ""
-                valorIngresado = document.getElementById('gasto').value = ""
+                queIngresa = document.getElementById('ingreso').value = ""
+                valorIngresado = document.getElementById('valor').value = ""
                 comentario = document.getElementById('comentario').value = ""
                 fecha = document.getElementById('fecha').value = ""
+
+                boton.onclick = function () {
+                    let queIngresa = document.getElementById('ingreso').value
+                    let fecha = document.getElementById('fecha').value
+                    let valor = document.getElementById('valor').value
+                    let comentario = document.getElementById('comentario').value
+            
+            
+                    db.collection("ingresos").add({
+            
+                        queIngresa: queIngresa,
+                        valorIngresado: valor,
+                        fecha: fecha,
+                        comentario: comentario
+            
+                    })
+                        .then(function (docRef) {
+                            console.log("este es el id", docRef.id);
+                            console.log(db.collection("ingresos"))
+                            queIngresa = document.getElementById('ingreso').value = ""
+                            fecha = document.getElementById('fecha').value = ""
+                            valor = document.getElementById('valor').value = ""
+                            comentario = document.getElementById('comentario').value = ""
+            
+            
+                        })
+                        .catch(function (error) {
+                            console.error("error", error);
+                        });
+                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    
+                }
 
             })
             .catch(function (error) {
@@ -331,6 +409,8 @@ function editarI(
 
 
     }
+
+
 }
 
 
