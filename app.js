@@ -94,10 +94,7 @@ function dom() {
 
 }
 // -------------------------------------------------------------------------
-// --egreso
-
-
-
+// guardar 
 function guardar() {
     let opcion = document.getElementById('dom').value
 
@@ -163,7 +160,9 @@ function guardar() {
     }
 
 }
+//------------------------------------------------
 //base de satos
+//leer los datos
 function leer() {
     let opcion = document.getElementById('dom').value
 
@@ -214,8 +213,8 @@ function leer() {
         });
     }
 }
+//--------------------------------------------------------
 // borrar
-//aca voyMM
 function eliminar(id) {
     let opcion = document.getElementById('dom').value
     if (opcion == "egreso") {
@@ -235,8 +234,9 @@ function eliminar(id) {
     }
 }
 
-
+//-------------------------------------
 // actualizar
+//egreso
 function editar(id, tipoGasto, gasto, comentario, fecha) {
     document.getElementById('tipoGasto').value = tipoGasto
     document.getElementById('gasto').value = gasto
@@ -313,6 +313,9 @@ function editar(id, tipoGasto, gasto, comentario, fecha) {
 
 }
 
+//-------------------------------------
+// actualizar
+//ingreso
 
 
 
@@ -386,19 +389,6 @@ function editarI(
                             console.error("error", error);
                         });
                     
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                    
                 }
 
             })
@@ -413,6 +403,3 @@ function editarI(
 
 }
 
-
-// -------------------------------------------------------------------------
-// --ingreso
