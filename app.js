@@ -316,9 +316,6 @@ function editar(id, tipoGasto, gasto, comentario, fecha) {
 //-------------------------------------
 // actualizar
 //ingreso
-
-
-
 function editarI(
     id,
     queIngresa,
@@ -402,4 +399,5 @@ function editarI(
 
 
 }
-
+// ------------------------------------
+// parte logica
